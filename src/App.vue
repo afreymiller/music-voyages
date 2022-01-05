@@ -1,0 +1,269 @@
+<template>
+  <div id="app">
+    <GmapMap
+      :center="{lat:41.92, lng:-87.65}"
+      :zoom="9"
+      map-type-id="terrain"
+      style="width: 500px; height: 300px"
+    >
+      <GmapMarker
+        :key="index"
+        v-for="(m, index) in markers"
+        :position="m.position"
+        :clickable="true"
+        :draggable="true"
+        @click="openInfoWindowTemplate(index)"
+      >
+        <gmap-info-window
+          :options="{
+            maxWidth: 300,
+            pixelOffset: { width: 0, height: 0 }
+          }"
+          :opened="m.open"
+          @closeclick="m.open=false">
+          <div v-html="getHtml(m)"></div>
+        </gmap-info-window>
+      </GmapMarker>
+    </GmapMap>
+    <div>
+     
+  </div>
+
+  <v-select :options="['Canada', 'United States']"></v-select>
+
+      <div>
+        <b-dropdown text="Primary" variant="primary" class="m-2">
+          <b-dropdown-item>
+            <input type="checkbox" id="chicago" value="Chicago" v-model="checkedCities">
+            <label for="checkbox">Chicago</label>
+          </b-dropdown-item>
+          <b-dropdown-item>
+            <input type="checkbox" id="denver" value="Denver" v-model="checkedCities">
+            <label for="checkbox">Denver</label>
+          </b-dropdown-item>
+          <b-dropdown-item>
+           <input type="checkbox" id="indianapolis" value="Indianapolis" v-model="checkedCities">
+           <label for="checkbox">Indianapolis</label>
+          </b-dropdown-item>
+        </b-dropdown>
+
+        <b-dropdown text="Success" variant="success" class="m-2">
+          <b-dropdown-item href="#">Action</b-dropdown-item>
+          <b-dropdown-item href="#">Another action</b-dropdown-item>
+          <b-dropdown-item href="#">Something else here</b-dropdown-item>
+        </b-dropdown>
+      </div>
+    </div>
+</template>
+
+<script>
+
+export default {
+  name: 'App',
+  components: {
+  },
+  data() {
+    return {
+      checkedCities: [],
+      markers: [
+        {
+          position: {lat: 41.9692, lng: -87.6580},
+          name: 'Aragon Ballroom',
+          artists: ['Louis the Child', 'The 1975', 'Phoenix', 'LCD Soundsystem', 'Zedd', 'Bleachers', 'The Killers'],
+          open: false
+        },
+        {
+          position: {lat: 41.8853, lng: -87.6617},
+          artists: ['St. Lucia', 'Baynk'],
+          name: 'Bottom Lounge',
+          open: false
+        },
+        {
+          position: {lat: 41.9187, lng: -87.6901},
+          artists: ['Tchami', 'Madeon', 'Bone Thugs-n-Harmony', 'The Knocks', 'Audien', 'Luttrell'],
+          name: 'Concord Music Hall',
+          open: false
+        },
+        {
+          position: {lat: 41.8594, lng: -87.6951},
+          artists: ['Bloc Party', 'The Struts', 'Manchester Orchestra', 'Living Colour', 'Motion City Soundtrack', 'Coheed and Cambria', 'Smashing Pumpkins'],
+          name: 'Douglas Park',
+          open: false
+        },
+        {
+          position: {lat: 39.7439, lng: -105.0201},
+          artists: ['Tchami', 'Tritonal', 'Kaskade', 'Illenium B2B Dabin B2B Said the Sky', 'Brondo B2B Decadon'],
+          name: 'Empower Stadium at Mile High',
+          open: false
+        },
+        {
+          position: {lat: 41.8299, lng: -87.6338},
+          artists: ['Tyler the Creator', 'Kanye West', 'John Legend', 'Alicia Keys', 'Chance the Rapper', 'Lil Wayne and 2 Chainz'],
+          name: 'Guaranteed Rate Field',
+          open: false
+        },
+        {
+          position: {lat: 41.9394, lng: -87.7214},
+          artists: ['The Crystal Method'],
+          name: 'Sleeping Village',
+          open: false
+        },
+        {
+          position: {lat: 41.8577, lng: -87.6575},
+          artists: ['Soccer Mommy'],
+          name: 'Thalia Hall',
+          open: false
+        },
+        {
+          position: {lat: 41.8854, lng: -87.6275},
+          artists: ['Primus', 'The Sword'],
+          name: 'Chicago Theater',
+          open: false
+        },
+        {
+          position: {lat: 41.8883, lng: -87.6288},
+          artists: ['Rich Brian'],
+          name: 'House of Blues',
+          open: false
+        },
+        {
+          position: {lat: 41.8644, lng: -87.6088},
+          artists: ['Vampire Weekend'],
+          name: 'Huntington Bank Pavilion',
+          open: false
+        },
+        {
+          position: {lat: 41.8722, lng: -87.6188},
+          artists: ['Louis the Child', 'Silversun Pickups', 'Bloc Party', 'Flume', 'Lil Wayne', 'Mondo Cozmo', 'Hozier', 'Janelle Monae', '21 Pilots', 'The Strokes', 'Elefante', 'Childish Gambino', '21 Savage', 'Louis the Child', 'Diesel'],
+          name: 'Lollapalooza',
+          open: false
+        },
+        {
+          position: {lat: 41.7913, lng: -87.5984},
+          artists: ['Chance the Rapper', 'Five for Fighting'],
+          name: 'Mandel Hall',
+          open: false
+        },
+        {
+          position: {lat: 41.9498, lng: -87.6588},
+          artists: ['Wire', 'Melvins'],
+          name: 'Metro Chicago',
+          open: false
+        },
+        {
+          position: {lat: 41.8919, lng: -87.6051},
+          artists: ['deadmau5', 'Porter Robinson'],
+          name: 'Navy Pier',
+          open: false
+        },
+        {
+          position: {lat: 41.8532, lng: -87.6428},
+          artists: ['Alan Walker', 'Tiesto'],
+          name: 'Radius Chicago',
+          open: false
+        },
+        {
+          position: {lat: 41.79085, lng: -87.598776},
+          artists: ['Madeon', 'Azealia Banks', 'T-Pain'],
+          name: 'Reynolds Club Courtyard',
+          open: false
+        },
+        {
+          position: {lat: 41.7648, lng: -87.8054},
+          artists: ['deadmau5', 'Inzo', 'Luzcid', 'Champagne Drip', 'Whethan', 'San Holo', 'Louis the Child'],
+          name: 'SeatGeek Stadium',
+          open: false
+        },
+        {
+          position: {lat: 41.8934, lng: -87.6354},
+          artists: ['Chromeo', 'Tchami', 'Paul van Dyk'],
+          name: 'Sound Bar',
+          open: false
+        },
+        {
+          position: {lat: 41.5441, lng: -87.7765},
+          artists: ['AFI', 'Noel Gallagher', 'Smashing Pumpkins', 'Slipknot', 'Fever 333', 'Killswitch Engage'],
+          name: 'Tinley Park Amphitheatre',
+          open: false
+        }, 
+        {
+          position: {lat: 25.7987, lng: -80.2018},
+          artists: ['Patrick Topping', 'The Strokes', 'Eric Prydz', 'Prospa', 'Zhu', 'Cristoph', 'Maceo Plex', 'RUFUS DU SOL', 'slowthai'],
+          name: 'Mana Wynwood Convention Center',
+          open: false
+        },
+        {
+          position: {lat: 41.8839, lng: -87.6655},
+          artists: ['JPEGMAFIA', 'Robyn', 'Charli XCX', 'Idris D B2B DJ Pierre', 'Patrick Topping', 'Deborah De Luca', 'Luttrell', 'Fisher', 'Gene Farris', 'Channel Tres', 'Meduza', 'Camelphat', 'Eric Prydz', 'Cirez D', 'Yaeji', 'Phoebe Bridgers', 'Kelly Lee Owens'],
+          name: 'Union Park',
+          open: false
+        },
+        {
+          position: {lat: 41.8807, lng: -87.6742},
+          artists: ['Sam Smith', 'Gorillaz', 'The 1975', 'Tame Impala'],
+          name: 'United Center',
+          open: false
+        },
+        {
+          position: {lat: 39.7665, lng: -86.1708},
+          artists: ['Sigur Ros'],
+          name: 'White River State Park',
+          open: false
+        },
+        {
+          position: {lat: 39.7434, lng: -104.9950},
+          artists: ['Zedd', 'DJ Snake', 'Walker & Royce', 'Louis the Child', 'Alesso', 'Chris Lake'],
+          name: 'Colorado Convention Center',
+          open: false
+        }
+      ]
+    }
+  },
+  methods: {
+    openInfoWindowTemplate(i) {
+      this.markers[i].open = true;
+    },
+    getHtml(marker) {
+
+      let string = `<h6>${marker.name}</h6><ul>`;
+      
+      for (let elem of marker.artists) {
+        string += `<li>${elem}</li>`
+      }
+
+      string += '</ul>';
+
+      return string;
+    }
+  }
+}
+</script>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+
+ul {
+  text-align: left;
+}
+
+h6 {
+  text-align: left;
+}
+
+li {
+  text-align: left;
+}
+
+ .dropdown {
+    position: relative;
+    display: block;
+    margin: auto;
+  }
+</style>
