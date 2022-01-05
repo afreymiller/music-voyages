@@ -25,35 +25,8 @@
         </gmap-info-window>
       </GmapMarker>
     </GmapMap>
-    <div>
-     
+    <v-select :options="['Canada', 'United States']"></v-select>
   </div>
-
-  <v-select :options="['Canada', 'United States']"></v-select>
-
-      <div>
-        <b-dropdown text="Primary" variant="primary" class="m-2">
-          <b-dropdown-item>
-            <input type="checkbox" id="chicago" value="Chicago" v-model="checkedCities">
-            <label for="checkbox">Chicago</label>
-          </b-dropdown-item>
-          <b-dropdown-item>
-            <input type="checkbox" id="denver" value="Denver" v-model="checkedCities">
-            <label for="checkbox">Denver</label>
-          </b-dropdown-item>
-          <b-dropdown-item>
-           <input type="checkbox" id="indianapolis" value="Indianapolis" v-model="checkedCities">
-           <label for="checkbox">Indianapolis</label>
-          </b-dropdown-item>
-        </b-dropdown>
-
-        <b-dropdown text="Success" variant="success" class="m-2">
-          <b-dropdown-item href="#">Action</b-dropdown-item>
-          <b-dropdown-item href="#">Another action</b-dropdown-item>
-          <b-dropdown-item href="#">Something else here</b-dropdown-item>
-        </b-dropdown>
-      </div>
-    </div>
 </template>
 
 <script>
@@ -69,13 +42,31 @@ export default {
         {
           position: {lat: 41.9692, lng: -87.6580},
           name: 'Aragon Ballroom',
-          artists: ['Louis the Child', 'The 1975', 'Phoenix', 'LCD Soundsystem', 'Zedd', 'Bleachers', 'The Killers'],
+          artists: ['Louis the Child', 'The 1975', 'Phoenix', 'Galantis', 'LCD Soundsystem', 'Zedd', 'Bleachers', 'The Killers'],
           open: false
         },
         {
           position: {lat: 41.8853, lng: -87.6617},
           artists: ['St. Lucia', 'Baynk'],
           name: 'Bottom Lounge',
+          open: false
+        },
+        {
+          position: {lat: 41.91011, lng: -87.65201},
+          artists: ['Valentino Khan'],
+          name: 'Joe\'s on Weed Street',
+          open: false
+        },
+        {
+          position: {lat: 41.8934, lng: -87.63},
+          artists: ['Galantis'],
+          name: 'Tao Chicago',
+          open: false
+        },
+        {
+          position: {lat: 41.8640, lng: -87.6638},
+          artists: ['Madeon', 'Galantis', 'ATLiens', 'Dillon Francis', 'Martin Garrix'],
+          name: 'Addams/Medill Park',
           open: false
         },
         {
