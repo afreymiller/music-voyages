@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import KEYS from '../keys/index.js'
 
 import * as VueGoogleMaps from 'vue2-google-maps';
 
@@ -24,7 +25,7 @@ Vue.use(IconsPlugin)
 
 Vue.use(VueGoogleMaps, {
     load: {
-      key: 'API_KEY'
+      key: KEYS.GOOGLE_MAPS
     }
 })
 
