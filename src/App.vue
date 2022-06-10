@@ -25,7 +25,12 @@
         </gmap-info-window>
       </GmapMarker>
     </GmapMap>
-    <v-select :options="['Canada', 'United States']"></v-select>
+    <v-select
+      v-model="selected"
+      :options="['FESTIVALS', 'GIGS']"
+      @input="setSelected"
+    >
+    </v-select>
   </div>
 </template>
 
@@ -40,10 +45,18 @@ export default {
   data() {
     return {
       checkedCities: [],
-      markers: LocationData.locationData
+      markers: LocationData.locationData.ALL,
+      selected: 'ALL'
     }
   },
   methods: {
+    setSelected() {
+      if (this.selected === 'ALL') {
+        this.markers = LocationData.locationData.ALL;
+      } if (this.selected === 'FESTIVALS') {
+        this.markers = LocationData.locationData.FESTIVALS;
+      }
+    },
     openInfoWindowTemplate(i) {
       this.markers[i].open = true;
     },
