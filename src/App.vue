@@ -28,6 +28,15 @@
 
     <div class="tile-container">
       <p>Holds the tiles</p>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2" v-for="fest in festivals" v-bind:key="fest.name">
+            <img src="./assets/lolla.png" width="50px" height="50px">
+
+            <p>{{fest.name}}</p>         
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -44,6 +53,38 @@ export default {
     return {
       checkedCities: [],
       markers: LocationData.locationData.ALL,
+      festivals: [
+        {
+          "name": "Lollapalooza"
+        },
+        {
+          "name": "Riot Fest"
+        },
+        {
+          "name": "Pitchfork"
+        },
+        {
+          "name": "III Points"
+        },
+        {
+          "name": "Ultra Miami"
+        },
+        {
+          "name": "Movement Detroit"
+        },
+        {
+          "name": "ARC Music Festival"
+        },
+        {
+          "name": "Shaky Knees"
+        },
+        {
+          "name": "Decadence Colorado"
+        },
+        {
+          "name": "Global Dance Festival"
+        }
+      ],
       selected: 'ALL'
     }
   },
@@ -94,6 +135,10 @@ h6 {
 
 li {
   text-align: left;
+}
+
+.col-md-2 {
+  border: 1px solid black;
 }
 
  .dropdown {
