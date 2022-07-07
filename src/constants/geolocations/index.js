@@ -1,4 +1,12 @@
 export default {
+    artists: [
+      'The Killers',
+      'Galantis',
+      'Afrojack',
+      'deadmau5',
+      'Tame Impala',
+      'The 1975'
+    ],
     locationData: {
         ALL: [
             {

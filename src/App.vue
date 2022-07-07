@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <GmapMap
-      :center="{lat:41.92, lng:-87.65}"
-      :zoom="9"
+      :center="{lat:35.92, lng:-87.65}"
+      :zoom="3"
       map-type-id="terrain"
       style="width: 500px; height: 300px"
     >
@@ -25,12 +25,10 @@
         </gmap-info-window>
       </GmapMarker>
     </GmapMap>
-    <v-select
-      v-model="selected"
-      :options="['FESTIVALS', 'GIGS']"
-      @input="setSelected"
-    >
-    </v-select>
+
+    <div class="tile-container">
+      <p>Holds the tiles</p>
+    </div>
   </div>
 </template>
 
